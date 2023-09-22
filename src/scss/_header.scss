@@ -1,0 +1,54 @@
+@use 'variables' as v;
+@use 'mixins' as m; 
+
+.header{
+    background-color: v.$verde;
+
+    h1{
+        color: v.$blanco;
+        text-align: center;
+
+        @include m.tablet{
+            margin: 0; 
+        }
+        transition: ease .5s; 
+    }
+
+    .titulo:hover{
+        color: rgb(253, 253, 165);
+        cursor: pointer; 
+    }
+    .contenido-header{
+        padding: 2rem;
+        @include m.tablet{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+}
+
+.navegacion-principal{
+
+    @include m.tablet{
+        display: flex;
+        gap: 2rem; 
+    }  
+
+    a{
+        display: block; 
+        text-align: center;
+        margin-bottom: 1rem;
+        color: v.$blanco;
+        font-size: 2.4rem;
+
+        @include m.tablet{
+            margin: 0; 
+        }
+
+        &:hover{ //&: hará que el anidamiento scss no de problemas a la hora de pasarse a css, se entiende como que es parte de "a" también 
+            color: v.$amarillo;
+        }
+    }
+}
+
