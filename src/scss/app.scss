@@ -1,8 +1,11 @@
-@use 'variables' as v; //@use compila, @forward solo apunta 
+@use 'normalize'; 
 @use 'globales'; 
 @use 'header'; 
 @use 'video'; 
 @use 'festival'; 
 @use 'lineup'; 
 @use 'galeria'; 
+@use 'entradas'; 
+@use 'footer'; 
+
 

@@ -3,7 +3,38 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 
 function iniciarApp(){
-    crearGaleria();
+    crearGaleria(); //crea la galeria de imágenes 
+    scrollNav();  //crea el efecto smooth scroll al clickar enlaces del header
+    navegacionFija();  //Fija la barra de navegación en la parte superior para que no desaparezca 
+}
+
+function navegacionFija(){
+    const barra = document.querySelector('.header'); 
+    const contenidoVideo = document.querySelector('.contenido-video'); 
+    //Se meten en const las clases de header y contenido-video
+
+    window.addEventListener('scroll', function(){  //Se manda a detectar scroll en toda la ventana y ejecutar la function
+
+        if(contenidoVideo.getBoundingClientRect().bottom < 0){   //Método de la API para dar info de coordenadas de la web etc 
+            //Básicamente cuando es <0 detecta que has pasado de la zona que ocupa contenido-video
+            barra.classList.add('fijo');  //Añadimos la clase fijo si se sobrepasa esa zona
+        } else {
+            barra.classList.remove('fijo');  //si no la eliminamos, ir a css.header.fijo
+        }
+    });
+} 
+
+//Efecto de scroll suave al clickar en los enlaces del header
+function scrollNav(){ 
+    const enlaces = document.querySelectorAll('.navegacion-principal a');   //Se seleccionan todos los enlaces de navegacion-principal
+    enlaces.forEach(enlace => {             //Se requiere bucle foreach debido a que son varios enlaces, si fuera uno solo no haría falta
+        enlace.addEventListener('click', function(e){     //a cada 'click' se ejecuta la function
+            e.preventDefault();    //Necesario para evitar el comportamiento por defecto que es ir directo
+            const scrollSection = e.target.attributes.href.value;   //Se mete en una const toda la info para hacerla mas "portable"
+            const seccion = document.querySelector(scrollSection);   //Se selecciona toda esa info de scrollSection 
+            seccion.scrollIntoView({behavior: "smooth"});   //Se utiliza de esta manera el método de la API nativa de JS 
+        });
+    });
 }
 
 function crearGaleria(){

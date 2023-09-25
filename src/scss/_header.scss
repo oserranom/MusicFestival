@@ -3,6 +3,15 @@
 
 .header{
     background-color: v.$verde;
+    @include m.tablet{
+
+        &.fijo{  //clase añadida con js
+
+            position: fixed; //fija la barra de navegación al añadir la clase fijo 
+            width: 100%; 
+            box-shadow: .1rem .2rem .3rem #333; //Se le añade una sombrita 
+        }
+    }
 
     h1{
         color: v.$blanco;
@@ -23,7 +32,7 @@
         @include m.tablet{
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: center; //Alinea verticalmente 
         }
     }
 }
