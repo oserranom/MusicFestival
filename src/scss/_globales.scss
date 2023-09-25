@@ -19,7 +19,7 @@ body{
     font-family: v.$fuente_principal;
     font-size: 1.6rem; 
 
-    &.fijar-body{
+    &.fijar-body{  //Clase añadida con js  
         overflow: hidden;
     }
 }
