@@ -7,6 +7,8 @@
 
         &.fijo{  //clase añadida con js
 
+            left: 0;
+            top: 0; //Se fija a la parte superior 
             position: fixed; //fija la barra de navegación al añadir la clase fijo 
             width: 100%; 
             box-shadow: .1rem .2rem .3rem #333; //Se le añade una sombrita 

@@ -16,6 +16,10 @@ exports.tarea = tarea;  //exports.functionNode = functionJS  se peuden llamar ig
 const {src, dest, watch, parallel} = require ('gulp'); //así se importan funciones de gulp y se guaradan en const para luego usarlas 
 const sass = require('gulp-sass')(require('sass')); 
 const plumber = require ('gulp-plumber'); 
+const autoprefixer = require('autoprefixer');  //Se encarga del soporte en navegadores
+const cssnano = require('cssnano');  //Se encarga de comprimir la hoja css
+const postcss = require('gulp-postcss');  //Transforma css por medio de los dos anteriores para mejor performance 
+const sourcemaps = require('gulp-sourcemaps'); 
 
 //Imagenes 
 
@@ -26,9 +30,12 @@ const avif = require('gulp-avif');
 
 function css (done){
     src('src/scss/**/*.scss') //Identifica el archivo SASS
-     .pipe( plumber())
-      .pipe(sass()) //Compila el archivo SASS
-       .pipe(dest('build/css')); //Guarda en el disco duro 
+    .pipe(sourcemaps.init())
+    .pipe( plumber())
+    .pipe(sass()) //Compila el archivo SASS
+    .pipe(postcss([autoprefixer(), cssnano()] ) )
+    .pipe(sourcemaps.write('.'))
+    .pipe(dest('build/css')); //Guarda en el disco duro 
 
     done(); //Evitamos tarea incompleta 
 }

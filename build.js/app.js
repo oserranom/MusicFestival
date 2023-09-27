@@ -13,13 +13,17 @@ function navegacionFija(){
     const contenidoVideo = document.querySelector('.contenido-video'); 
     //Se meten en const las clases de header y contenido-video
 
+    const body = document.querySelector('body'); //Efecto fijar el header sin saltos 
+
     window.addEventListener('scroll', function(){  //Se manda a detectar scroll en toda la ventana y ejecutar la function
 
         if(contenidoVideo.getBoundingClientRect().bottom < 0){   //Método de la API para dar info de coordenadas de la web etc 
             //Básicamente cuando es <0 detecta que has pasado de la zona que ocupa contenido-video
             barra.classList.add('fijo');  //Añadimos la clase fijo si se sobrepasa esa zona
+            body.classList.add('body-scroll'); //Efecto de fijar el header pero sin saltos 
         } else {
             barra.classList.remove('fijo');  //si no la eliminamos, ir a css.header.fijo
+            body.classList.remove('body-scroll');  //Efecto de fijar el header sin saltos 
         }
     });
 } 
