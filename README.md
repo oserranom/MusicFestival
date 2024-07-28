@@ -1,4 +1,2 @@
 # MusicFestival
-Music festival web. HTML, SASS, GULP, JS
-
-
+This is a web application designed to announce a music festival. We provide information about the bands that will be performing, among other details. The gallery of images has been created using JavaScript, allowing each image to be opened separately in a larger view. Additionally, a sticky effect has been applied to the navigation bar once a certain scroll level is reached, using JavaScript. Each section of the website can be accessed directly from the navigation with a smooth scroll effect.
